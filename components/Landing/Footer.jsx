@@ -6,7 +6,7 @@ const Footer = () => {
             <div className="flex flex-col items-start ml-20">
                 <div className="flex flex-row justify-around">
                     <div className="">
-                        <Image className='' width={250} height={250} src="/logo.svg"/>
+                        <Image width={250} height={250} src="/logo.svg"/>
                     </div>
                 </div>
                 <div className="ml-8">
