@@ -1,3 +1,4 @@
+import Footer from "@/components/Landing/Footer";
 import { Header } from "@/components/Landing/Header";
 import Inicio from "@/components/Landing/Inicio";
 import Productos from "@/components/Landing/Productos";
@@ -10,6 +11,7 @@ const Home = () => {
       <Inicio/>
       <Productos/>
       <Servicios/>
+      <Footer/>
     </div>
   )
 }
