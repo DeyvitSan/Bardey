@@ -1,3 +1,5 @@
+"use client"
+
 import NavBarAdmin from "@/components/Administrador/NavBarAdmin";
 import TableProductos from "@/components/Administrador/TableProductos";
 

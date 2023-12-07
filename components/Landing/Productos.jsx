@@ -2,7 +2,7 @@ import Card from "./Card";
 
 const Productos = () => {
     return(
-        <div className="flex flex-col bg-[#E4E2E2] pt-10 gap-10">
+        <div className="flex flex-col bg-[#E4E2E2] pt-10 gap-10" id="productos">
             <div className="flex flex-row justify-center">
                 <div className="flex flex-col items-center gap-3">
                     <h2 className="flex flex-col text-center font-medium">

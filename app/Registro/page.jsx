@@ -3,8 +3,12 @@ import { useState } from 'react';
 import Image from 'next/image'
 import MostrarContraseña from '../../public/MostrarContraseña.svg'
 import OcultarContraseña from '../../public/OcultarContraseña.svg'
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const Page = () => {
+
+    const router = useRouter()
 
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -86,10 +90,14 @@ const Page = () => {
                             </button>
                         </div>
                         <div className='pt-10'>
-                            <button className='bg-[#000000] text-[#ffffff] w-[50vh] h-[6vh] font-medium rounded-sm hover:scale-105 hover:duration-300'>Registrarse</button>
+                            <button className='bg-[#000000] text-[#ffffff] w-[50vh] h-[6vh] 
+                                                font-medium rounded-sm hover:scale-105 
+                                                hover:duration-300' onClick={() => {
+                                                    router.push("/Login")
+                                                }}>Registrarse</button>
                         </div>
                         <div className='pt-10'>
-                            <p>¿Ya tienes cuenta? <a className='font-semibold' href="">Inicia sesión aquí</a></p>
+                            <p>¿Ya tienes cuenta? <Link className='font-semibold' href="/Login">Inicia sesión aquí</Link></p>
                         </div>
                     </div>
                 </div>

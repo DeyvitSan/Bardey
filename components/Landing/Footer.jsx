@@ -6,13 +6,13 @@ const Footer = () => {
             <div className="flex flex-col items-start ml-20">
                 <div className="flex flex-row justify-around">
                     <div className="">
-                        <Image width={250} height={250} src="/logo.svg"/>
+                        <Image width={180} height={180} src="/logo.svg"/>
                     </div>
                 </div>
-                <div className="ml-8">
+                <div className="ml-1">
                     <h2 className='text-[#FFFFFF] mr-9 font-light'>Copyright © 2023</h2>
                 </div>
-                <div className='pt-2 ml-8'>
+                <div className='pt-2 ml-1'>
                     <h4 className='text-[#FFFFFF] font-thin text-xs'>Tú eres nuestra prioridad</h4>
                 </div>
             </div>
