@@ -1,4 +1,21 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 const Table = () => {
+
+    const [user, setUser] = useState([])
+
+    useEffect(() => {
+        const apiUrl = "http://localhost:3001/api/cliente";
+        axios.get(apiUrl)
+            .then(({ data }) => {
+                setUser(data.data)
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    },);
+
     return(
         <div className="bg-[#FFF] w-[132vh] h-[76vh] rounded-lg shadow-2xl">
             <table className="w-full h-full flex flex-col items-center">
@@ -13,14 +30,25 @@ const Table = () => {
                     </tr>
                 </thead>
                 <tbody className="w-full mt-3 ml-[115px]">
-                    <tr className="flex">
-                        <td className="font-normal text-center">1</td>
-                        <td className="font-normal text-center ml-[78px]">Gerardo</td>
-                        <td className="font-normal text-center ml-[80px]">Gonzalez</td>
-                        <td className="font-normal text-center ml-[110px]">Ruiz</td>
-                        <td className="font-normal text-center ml-[88px]">9612801999</td>
-                        <td className="font-normal text-center ml-[70px]">isai@gmail.com</td>
-                    </tr>
+
+
+                    {user.map(cliente => {
+
+
+
+                        return (
+                            <>
+                                <tr className="flex pt-4" key={cliente.id_cliente}>
+                                    <td className="font-normal text-center">{cliente.id_cliente}</td>
+                                    <td className="font-normal text-center ml-[78px]"></td>
+                                    <td className="font-normal text-center ml-[80px]"></td>
+                                    <td className="font-normal text-center ml-[110px]"></td>
+                                    <td className="font-normal text-center ml-[88px]"></td>
+                                    <td className="font-normal text-center ml-[70px]"></td>
+                                </tr>
+                            </>
+                        )
+                    })}
                 </tbody>
             </table>
         </div>

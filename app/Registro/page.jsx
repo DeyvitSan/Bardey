@@ -5,6 +5,7 @@ import MostrarContraseña from '../../public/MostrarContraseña.svg'
 import OcultarContraseña from '../../public/OcultarContraseña.svg'
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
 
 const Page = () => {
 
@@ -14,6 +15,39 @@ const Page = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [password2, setPassword2] = useState('');
     const [showPassword2, setShowPassword2] = useState(false);
+    const [nombre, setNombre] = useState('');
+    const [correo, setCorreo] = useState('');
+
+    const handleNameChange = (event) => {
+        setNombre(event.target.value);
+      };
+      
+    const handleCorreoChange = (event) => {
+        setCorreo(event.target.value);
+      };
+
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+      };
+    
+      const handlePasswordChange2 = (event) => {
+        setPassword2(event.target.value);
+      };
+
+
+    const handleCrearUsuario = () => {
+        const newUser = {
+            nombre: nombre,
+            correo: correo,
+            contrasena: password,
+            salt: password2,
+          };
+        axios.post('http://localhost:3001/api/cliente', newUser)
+            .then((response => {
+                console.log(response.data.data)
+                router.push("/Login")
+            }))
+    }
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -27,7 +61,7 @@ const Page = () => {
     return(
         <div className="flex flex-row justify-center w-full h-screen overflow-hidden">
             <div className='basis-1/2'>
-                <Image src="/ImgLogin.png" width={500} height={500} layout='responsive'/>
+                <Image src="/ImgRegistro.svg" width={500} height={500} layout='responsive'/>
             </div>
             <div className='basis-1/2 mt-24'>
                 <div className='flex justify-center items-center'>
@@ -40,13 +74,17 @@ const Page = () => {
                             type="text" 
                             placeholder="Ingresa tú nombre"
                             className="h-12 w-[50vh] border-2 border-[#F4F4F4] rounded-sm pl-2 font-light"
+                            value={nombre}
+                            onChange={handleNameChange}
                             />
                         </div>
                         <div className="flex justify-center pb-5">
                             <input 
-                            type="text" 
+                            type="email" 
                             placeholder="Ingresa tú correo" 
                             className="h-12 w-[50vh] border-2 border-[#F4F4F4] rounded-sm pl-2 font-light"
+                            value={correo}
+                            onChange={handleCorreoChange} 
                             />
                         </div>
                         <div className="flex justify-center relative">
@@ -55,7 +93,7 @@ const Page = () => {
                                 type={showPassword ? 'text' : 'password'}
                                 placeholder="Ingresa tú contraseña"
                                 value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                onChange={handlePasswordChange}
                             />
                             <button
                                 type="button"
@@ -75,7 +113,7 @@ const Page = () => {
                                 type={showPassword2 ? 'text' : 'password'}
                                 placeholder="Confirma tú contraseña"
                                 value={password2}
-                                onChange={(e) => setPassword2(e.target.value)}
+                                onChange={handlePasswordChange2}
                             />
                             <button
                                 type="button"
@@ -92,9 +130,7 @@ const Page = () => {
                         <div className='pt-10'>
                             <button className='bg-[#000000] text-[#ffffff] w-[50vh] h-[6vh] 
                                                 font-medium rounded-sm hover:scale-105 
-                                                hover:duration-300' onClick={() => {
-                                                    router.push("/Login")
-                                                }}>Registrarse</button>
+                                                hover:duration-300' onClick={handleCrearUsuario}>Registrarse</button>
                         </div>
                         <div className='pt-10'>
                             <p>¿Ya tienes cuenta? <Link className='font-semibold' href="/Login">Inicia sesión aquí</Link></p>
