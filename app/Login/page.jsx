@@ -5,6 +5,7 @@ import MostrarContraseña from '../../public/MostrarContraseña.svg'
 import OcultarContraseña from '../../public/OcultarContraseña.svg'
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
 
 const Page = () => {
 
@@ -12,6 +13,38 @@ const Page = () => {
 
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const [correo, setCorreo] = useState('')
+
+    const handleCorreoChange = (event) => {
+        setCorreo(event.target.value);
+    }
+
+    const handleContraChange = (event) => {
+        setPassword(event.target.value);
+    }
+
+    const handleLoginUsuario = (e) => {
+        e.preventDefault();
+        if (!correo || !password) {
+            alert('Campos vacios')
+            return;
+          }
+        const newUser = {
+            correo: correo,
+            contrasenia: password
+          };
+
+        axios.post('http://localhost:3001/api/auth/login', newUser)
+            .then((response => {
+                console.log(response);
+                response.status === 401 ? console.log("401") : console.log("200")
+                alert('Correcto');
+                router.push('/User/Productos');
+            }))
+            .catch(({response}) => {
+                alert(response.message)
+            })
+    }
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -33,6 +66,8 @@ const Page = () => {
                             type="text" 
                             placeholder="Ingresa tú correo" 
                             className="h-12 w-[50vh] border-2 border-[#F4F4F4] rounded-sm pl-2 font-light"
+                            value={correo}
+                            onChange={handleCorreoChange}
                             />
                         </div>
                         <div className="flex justify-center relative">
@@ -41,7 +76,7 @@ const Page = () => {
                                 type={showPassword ? 'text' : 'password'}
                                 placeholder="Ingresa tú contraseña"
                                 value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                onChange={handleContraChange}
                             />
                             <button
                                 type="button"
@@ -58,9 +93,7 @@ const Page = () => {
                         <div className='pt-10'>
                             <button className='bg-[#000000] text-[#ffffff] w-[50vh] h-[6vh] 
                                                 font-medium rounded-sm hover:scale-105 
-                                                hover:duration-300' onClick={() => {
-                                                    router.push("/User/Productos")
-                                                }}>
+                                                hover:duration-300' onClick={handleLoginUsuario}>
                                                     Iniciar sesión
                             </button>
                         </div>
