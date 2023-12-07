@@ -10,7 +10,7 @@ const Header = () => {
                 src="/logo.svg"/>
             </div>
             <div>
-                <button className='text-[#FFFFFF] bg-[#EF4D4D99] text-sm w-32 h-8 mr-14'>Cerrar sesión</button>
+                <button className='text-[#FFFFFF] bg-[#EF4D4D99] text-sm w-32 h-8 mr-14 hover:scale-105 hover:duration-300'>Cerrar sesión</button>
             </div>
         </div>
     )
