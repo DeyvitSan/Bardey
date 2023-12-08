@@ -1,22 +1,26 @@
 const TableProductos = () => {
     return(
-        <div className="bg-[#FFF] w-[132vh] h-[76vh] rounded-lg shadow-2xl">
+        <div className="bg-[#FFF] w-[130vh] h-[76vh] rounded-lg shadow-2xl">
             <table className="w-full h-full flex flex-col items-center">
-                <thead className="w-full mt-5">
-                    <tr className="flex justify-start ml-20">
-                        <th className="font-semibold text-center">ID</th>
-                        <th className="font-semibold text-center">Nombre</th>
-                        <th className="font-semibold text-center">Precio</th>
-                        <th className="font-semibold text-center">Acciones</th>
+                <thead className="w-full flex items-center justify-start ml-[140px]">
+                    <tr className="flex gap-[105px] mt-6">
+                        <th className="font-semibold text-center text-base">ID</th>
+                        <th className="font-semibold text-center text-base">Nombre</th>
+                        <th className="font-semibold text-center text-base">Precio</th>
+                        <th className="font-semibold text-center text-base">Acciones</th>
                     </tr>
                 </thead>
-                <tbody className="w-full mt-3">
-                    <tr className="flex justify-start ml-[84px]">
-                        <td className="font-normal text-center">1</td>
-                        <td className="font-normal text-center">Crema para cabello</td>
-                        <td className="font-normal text-center">$149</td>
-                        <td className="font-normal text-center]"></td>
-                    </tr>
+                <tbody className="w-full flex-col">
+                    <tr className="flex ml-10 pt-4 gap-[20px] mr-5">
+                        <td className="font-normal text-center text-xs"></td>
+                        <td className="font-normal text-center text-xs ml-16"></td>
+                        <td className="font-normal text-center text-xs ml-14"></td>
+                        <td className="flex flex-row gap-5">
+                            <button className="bg-green-500 p-2 h-10 text-[#fff] font-medium rounded-md shadow-2xl">Agregar</button>
+                            <button className="bg-sky-400 p-2 h-10 text-[#fff] font-medium rounded-md shadow-2xl">Editar</button>
+                            <button className="bg-red-500 p-2 h-10 text-[#fff] font-medium rounded-md shadow-2xl">Eliminar</button>
+                        </td>
+                    </tr>       
                 </tbody>
             </table>
         </div>

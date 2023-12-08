@@ -17,6 +17,7 @@ const Page = () => {
 
     const handleCorreoChange = (event) => {
         setCorreo(event.target.value);
+        sessionStorage.setItem("correo", event.target.value)
     }
 
     const handleContraChange = (event) => {
@@ -36,13 +37,18 @@ const Page = () => {
 
         axios.post('http://localhost:3001/api/auth/login', newUser)
             .then((response => {
-                console.log(response);
-                response.status === 401 ? console.log("401") : console.log("200")
-                alert('Correcto');
-                router.push('/User/Productos');
+                let message = response.data.message && response.data.message || ""
+                const email = sessionStorage.getItem("correo")
+                if(message === "email o contraseña incorrecta"){
+                    window.alert("Email o contraseñas inválidas")
+                }else{
+                    window.alert("Inicio de sesión correcto")
+                    email === "admin@gmail.com" ? router.push("/Administrador/Citas") : router.push("/User/Productos")
+                }
             }))
-            .catch(({response}) => {
-                alert(response.message)
+            .catch((error) => {
+                console.error("Something went wrong:", error)
+                window.alert("Email o contraseñas inválidas")
             })
     }
 
