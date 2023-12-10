@@ -11,7 +11,7 @@ const Inicio = () => {
                 </h2>
                 <p className="text-[#FFFFFF] font-thin">
                     Bienvenido a Bardey, contamos con múltiples servicios para ti, recuerda que <br /> 
-                    Bardeytú eres nuestra prioridad
+                    Bardey tú eres nuestra prioridad
                 </p>
                 <Link href="/Login">
                     <div className="w-56 h-10 flex items-center relative cursor-pointer hover:scale-105 hover:duration-300">
