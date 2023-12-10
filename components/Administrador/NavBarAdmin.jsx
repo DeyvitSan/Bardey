@@ -7,7 +7,7 @@ const NavBarAdmin = () => {
     const router = useRouter()
 
     return(
-        <nav className="flex flex-col items-center bg-black h-screen w-48 pt-10">
+        <nav className="flex flex-col items-center bg-black h-[145vh] w-48 pt-10">
             <Image src="/logo.svg" width={156} height={156}/>
             <div className='flex flex-col items-center gap-16 pt-28'>
                 <Link className='text-[#FFF] font-medium' href="/Administrador/Productos">Productos</Link>

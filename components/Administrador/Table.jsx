@@ -32,12 +32,7 @@ const Table = () => {
                     </tr>
                 </thead>
                 <tbody className="w-full flex-col">
-
-
                     {user.map(cita => {
-
-
-
                         return (
                             <>
                                 <tr className="flex ml-10 pt-4 gap-[20px] mr-5" key={cita.id_cita}>
