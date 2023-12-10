@@ -2,6 +2,7 @@ import CardServicio from "./CardServicio";
 
 const Servicios = () => {
     return(
+        //No table 
         <div className="flex flex-col bg-[#FFFFFF] pt-10 gap-10 pb-24" id="servicios">
             <div className="flex flex-row justify-center">
                 <div className="flex flex-col items-center gap-3">
